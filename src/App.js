@@ -7,6 +7,9 @@ import PlayerSignupPage from "./pages/PlayerSignupPage/PlayerSignupPage";
 import TeamMainPage from "./pages/TeamMainPage/TeamMainPage";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PlayerProfile from "./pages/PlayerProfile/PlayerProfile";
+import PlayerMainPage from "./pages/PlayerMainPage/PlayerMainPage";
+import TeamProfile from "./pages/TeamProfile/TeamProfile";
 
 function App() {
   const [players, setPlayers] = useState([]);
@@ -46,11 +49,30 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/team-signup-page" element={<TeamSignupPage />} />
-          <Route path="/player-signup-page" element={<PlayerSignupPage />} />
+          <Route
+            path="/team-signup-page"
+            element={<TeamSignupPage getTeams={getTeams} />}
+          />
+          <Route
+            path="/player-signup-page"
+            element={<PlayerSignupPage getPlayers={getPlayers} />}
+          />
           <Route
             path="/team-home"
             element={<TeamMainPage players={players} />}
+          />
+
+          <Route
+            path="/player-home"
+            element={<PlayerMainPage teams={teams} />}
+          />
+          <Route
+            path="/team-home/player-profile/:playerId"
+            element={<PlayerProfile players={players} />}
+          />
+          <Route
+            path="/player-home/team-profile/:teamId"
+            element={<TeamProfile teams={teams} />}
           />
         </Routes>
       </BrowserRouter>

@@ -19,7 +19,14 @@
     color: white;
   }
 
-  &__mission {
-    margin: 2rem;
+  // &__mission {
+  //   margin: 2rem;
+  // }
+
+  &__mission-text {
+    padding: 2rem;
+    text-align: center;
+    background-color: #57cc99;
+    color: white;
   }
 }

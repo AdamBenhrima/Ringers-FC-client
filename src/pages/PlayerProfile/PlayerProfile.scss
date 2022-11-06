@@ -1,0 +1,26 @@
+.player-profile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2rem;
+
+  &__arrow {
+    width: 4rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+
+  &__name {
+    padding: 1rem 0;
+  }
+
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+  }
+}

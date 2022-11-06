@@ -2,7 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -14,7 +15,9 @@ body {
   font-size: 1.6rem;
   margin: 0;
   padding: 0;
+  color: #22577a;
 }
+
 h1,
 h2,
 h3,

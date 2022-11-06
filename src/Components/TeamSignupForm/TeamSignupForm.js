@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "@mui/material/Slider";
 import "./TeamSignupForm.scss";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const TeamSignupForm = () => {
+const TeamSignupForm = ({ getTeams }) => {
+  const [teamDetails, setTeamDetails] = useState({
+    teamName: "",
+    teamEmail: "",
+    teamTelephone: "",
+    postcode: "",
+    level: 2,
+    positionNeeded: {
+      Goalkeeper: false,
+      Defender: false,
+      Midfielder: false,
+      Forward: false,
+    },
+  });
+
+  const navigate = useNavigate();
+
   const marks = [
     {
       value: 1,
@@ -21,39 +39,88 @@ const TeamSignupForm = () => {
   function valuetext(value) {
     return `${value}`;
   }
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTeamDetails({ ...teamDetails, [name]: value });
+  };
+
+  const handlePositionChange = (e) => {
+    const { value, checked } = e.target;
+
+    setTeamDetails({
+      ...teamDetails,
+      positionNeeded: { ...teamDetails.positionNeeded, [value]: checked },
+    });
+  };
+
+  const addTeam = async () => {
+    const { data } = await axios
+      .post("http://localhost:8080/teams", teamDetails)
+      .catch((error) => {
+        alert(error.response.statusText);
+        console.log(error.response);
+      });
+    getTeams();
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    addTeam();
+    navigate("/team-home");
+  };
   return (
-    <form className="team-form" name="teamForm" id="teamForm">
+    <form
+      className="team-form"
+      name="teamForm"
+      id="teamForm"
+      onSubmit={(e) => {
+        submitHandler(e);
+      }}
+    >
       <input
         className="form-input"
         type="text"
         placeholder="Team Name"
         name="teamName"
+        onChange={(e) => {
+          handleInputChange(e);
+        }}
       />
       <input
         className="form-input"
         type="text"
         placeholder="Email"
-        name="email"
+        name="teamEmail"
+        onChange={(e) => {
+          handleInputChange(e);
+        }}
       />
-      <input
+      {/* <input
         className="form-input"
         type="text"
         placeholder="Password"
         name="password"
-      />
+      /> */}
       <input
         className="form-input"
         type="text"
         placeholder="Mobile number"
-        name="mobile"
+        name="teamTelephone"
+        onChange={(e) => {
+          handleInputChange(e);
+        }}
       />
       <input
         className="form-input"
         type="text"
         placeholder="Postcode"
         name="postcode"
+        onChange={(e) => {
+          handleInputChange(e);
+        }}
       />
-      <label htmlFor="slider">
+      <label htmlFor="level" className="signup-slider">
         Playing Level
         <Slider
           aria-label="Custom marks"
@@ -65,9 +132,66 @@ const TeamSignupForm = () => {
           min={1}
           max={3}
           form="teamForm"
-          name="slider"
+          name="level"
+          onChange={(e) => {
+            handleInputChange(e);
+          }}
         />
       </label>
+      <fieldset className="form-input">
+        <legend>Positions Needed</legend>
+        <div>
+          <input
+            type="checkbox"
+            id="goalkeeper"
+            name="positions"
+            value="Goalkeeper"
+            onChange={(e) => {
+              handlePositionChange(e);
+            }}
+          />
+          <label htmlFor="goalkeeper">Goalkeeper</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="defender"
+            name="positions"
+            value="Defender"
+            onChange={(e) => {
+              handlePositionChange(e);
+            }}
+          />
+          <label htmlFor="defender">Defender</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="midfielder"
+            name="positions"
+            value="Midfielder"
+            onChange={(e) => {
+              handlePositionChange(e);
+            }}
+          />
+          <label htmlFor="midfielder">Midfielder</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="forward"
+            name="positions"
+            value="Forward"
+            onChange={(e) => {
+              handlePositionChange(e);
+            }}
+          />
+          <label htmlFor="forward">Forward</label>
+        </div>
+      </fieldset>
+      <button type="submit" className="nav__button signup-button">
+        Register
+      </button>
     </form>
   );
 };

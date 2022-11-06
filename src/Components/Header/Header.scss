@@ -1,3 +1,5 @@
+@use "../../styles/partials/fonts" as *;
+
 .header {
   display: flex;
   flex-direction: column;
@@ -8,7 +10,8 @@
   &__wrapper {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2rem;
   }
 
@@ -17,12 +20,14 @@
     color: inherit;
     font-size: 3.2rem;
     font-weight: 600;
+    font-family: "Grasstrack";
   }
 
   &__profile,
   &__inbox {
     width: 3.6rem;
     height: 3.6rem;
+    margin-right: 2rem;
   }
 }
 
@@ -36,8 +41,9 @@
 
     text-decoration: none;
     color: inherit;
+    color: white;
     border-radius: 2rem;
-    background-color: aqua;
+    background-color: #22577a;
     height: 4rem;
     display: flex;
     justify-content: center;

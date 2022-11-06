@@ -1,10 +1,13 @@
 import React from "react";
 import PlayerSignupForm from "../../Components/PlayerSignupForm/PlayerSignupForm";
 
-const PlayerSignupPage = () => {
+const PlayerSignupPage = ({ getPlayers }) => {
   return (
     <>
-      <PlayerSignupForm />
+      <div className="team-banner">
+        <h1 className="team-banner__text">Player Signup Form</h1>
+      </div>
+      <PlayerSignupForm getPlayers={getPlayers} />
     </>
   );
 };
