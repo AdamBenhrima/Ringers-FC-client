@@ -3,7 +3,6 @@
     url(../../assets/images/player-photo.jpg) no-repeat;
   background-size: cover;
   height: 25rem;
-  margin: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +10,7 @@
   &__button {
     display: flex;
     background-color: #22577a;
+    font-weight: 600;
     text-decoration: none;
     color: white;
     border-radius: 2rem;

@@ -10,11 +10,15 @@ import { useEffect, useState } from "react";
 import PlayerProfile from "./pages/PlayerProfile/PlayerProfile";
 import PlayerMainPage from "./pages/PlayerMainPage/PlayerMainPage";
 import TeamProfile from "./pages/TeamProfile/TeamProfile";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [players, setPlayers] = useState([]);
   const [teams, setTeams] = useState([]);
   const [messages, setMessages] = useState([]);
+
+  const [selectedLevel, setSelectedLevel] = useState("");
+  const [selectedPosition, setSelectedPosition] = useState("");
 
   const getPlayers = async () => {
     const { data } = await axios.get("http://localhost:8080/players");
@@ -34,6 +38,38 @@ function App() {
     getTeams();
   }, []);
 
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      let { data } = await axios.get("http://localhost:8080/players");
+      if (selectedLevel) {
+        data = data.filter((player) => player.level === selectedLevel);
+      }
+
+      if (selectedPosition) {
+        data = data.filter((player) => player.positionPlayed[selectedPosition]);
+      }
+
+      setPlayers(data);
+    };
+    fetchPlayers();
+  }, [selectedLevel, selectedPosition]);
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      let { data } = await axios.get("http://localhost:8080/teams");
+      if (selectedLevel) {
+        data = data.filter((team) => team.level === selectedLevel);
+      }
+
+      if (selectedPosition) {
+        data = data.filter((team) => team.positionNeeded[selectedPosition]);
+      }
+
+      setTeams(data);
+    };
+    fetchTeams();
+  }, [selectedLevel, selectedPosition]);
+
   const getMessages = async () => {
     const { data } = await axios.get("http://localhost:8080/messages");
     setMessages(data);
@@ -42,6 +78,14 @@ function App() {
   useEffect(() => {
     getMessages();
   }, []);
+
+  const handleLevelFilter = (selectedLevel) => {
+    setSelectedLevel(selectedLevel === "0" ? 0 : selectedLevel);
+  };
+
+  const handlePositionFilter = (selectedPosition) => {
+    setSelectedPosition(selectedPosition === "0" ? 0 : selectedPosition);
+  };
 
   return (
     <>
@@ -59,12 +103,23 @@ function App() {
           />
           <Route
             path="/team-home"
-            element={<TeamMainPage players={players} />}
+            element={
+              <TeamMainPage
+                players={players}
+                handleLevelFilter={handleLevelFilter}
+                handlePositionFilter={handlePositionFilter}
+              />
+            }
           />
-
           <Route
             path="/player-home"
-            element={<PlayerMainPage teams={teams} />}
+            element={
+              <PlayerMainPage
+                teams={teams}
+                handleLevelFilter={handleLevelFilter}
+                handlePositionFilter={handlePositionFilter}
+              />
+            }
           />
           <Route
             path="/team-home/player-profile/:playerId"
@@ -75,6 +130,7 @@ function App() {
             element={<TeamProfile teams={teams} />}
           />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

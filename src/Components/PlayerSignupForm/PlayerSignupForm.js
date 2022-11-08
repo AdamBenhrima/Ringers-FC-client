@@ -121,7 +121,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
           handleInputChange(e);
         }}
       />
-      <label htmlFor="slider" className="signup-slider">
+      <label htmlFor="level" className="signup-slider">
         Playing Level
         <Slider
           aria-label="Custom marks"
@@ -133,7 +133,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
           min={1}
           max={3}
           form="playerForm"
-          name="slider"
+          name="level"
           onChange={(e) => {
             handleInputChange(e);
           }}

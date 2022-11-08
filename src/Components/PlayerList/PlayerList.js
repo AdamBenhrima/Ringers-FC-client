@@ -14,12 +14,11 @@ const PlayerList = ({ player }) => {
 
   return (
     <Link
-      renderPositions={renderPositions}
       to={`/team-home/player-profile/${player.id}`}
       className="player-list__values"
     >
       <p className="player-list__value">{player.playerName}</p>
-      <p className="player-list__value">{renderPositions()}</p>
+      <div className="player-list__value">{renderPositions()}</div>
       <p className="player-list__value">{player.level}</p>
     </Link>
   );

@@ -23,4 +23,11 @@
     justify-content: space-between;
     padding-bottom: 2rem;
   }
+
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    text-decoration: underline;
+  }
 }

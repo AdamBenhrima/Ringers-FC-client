@@ -23,8 +23,7 @@
     font-family: "Grasstrack";
   }
 
-  &__profile,
-  &__inbox {
+  &__icon {
     width: 3.6rem;
     height: 3.6rem;
     margin-right: 2rem;
@@ -38,7 +37,7 @@
 
   &__button {
     width: 45%;
-
+    font-weight: 600;
     text-decoration: none;
     color: inherit;
     color: white;

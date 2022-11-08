@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__wrapper">
-        <img src={football} alt="" className="header__inbox" />
+        <img src={football} alt="" className="header__icon" />
         <a href="/" className="header__logo">
           RINGERS FC
         </a>

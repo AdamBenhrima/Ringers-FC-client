@@ -16,6 +16,13 @@ body {
   margin: 0;
   padding: 0;
   color: #22577a;
+  background-color: #dae8e6;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,

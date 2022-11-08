@@ -1,0 +1,32 @@
+@use "../../styles/partials/fonts" as *;
+
+.footer {
+  margin-top: auto;
+  background-color: #57cc99;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  align-items: center;
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__social {
+    margin-right: 1rem;
+  }
+
+  &__logo {
+    text-decoration: none;
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 600;
+    font-family: "Grasstrack";
+  }
+
+  &__icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-right: 1rem;
+  }
+}

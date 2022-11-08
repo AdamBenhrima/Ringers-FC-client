@@ -18,8 +18,8 @@ const Hero = () => {
         <h3 className="hero__mission-text">
           Last minute dropout?
           <br />
-          <br /> Barely scraping an 11 together for a wet and windy match on
-          Clapham Common? <br />
+          <br /> Barely scraping an 11 together for a wet and windy match on the
+          Common? <br />
           <br />
           Ringers FC can help! <br />
           <br />

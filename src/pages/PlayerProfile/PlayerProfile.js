@@ -47,9 +47,17 @@ const PlayerProfile = () => {
           />
           <h3 className="player-profile__name">{player.playerName}</h3>
         </div>
+        <div className="player-profile__labels">
+          <p>Positions Played</p>
+          <p>Playing Level</p>
+        </div>
         <div className="player-profile__value">
           <p>{renderPositions()}</p>
           <p>{player.level}</p>
+        </div>
+        <div className="player-profile__labels">
+          <p>Postcode</p>
+          <p>Telephone</p>
         </div>
         <div className="player-profile__value">
           <p>{player.postcode}</p>

@@ -14,7 +14,6 @@ const TeamList = ({ team }) => {
 
   return (
     <Link
-      renderPositions={renderPositions}
       to={`/player-home/team-profile/${team.id}`}
       className="team-list__values"
     >
