@@ -12,10 +12,19 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 1rem;
+    background-color: #57cc99;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  &__title {
+    color: white;
+    padding: 1rem 0;
   }
 
   &__name {
     padding: 1rem 0;
+    text-align: center;
   }
 
   &__value {

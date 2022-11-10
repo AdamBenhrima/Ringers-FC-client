@@ -7,18 +7,23 @@
   }
 
   &__box {
-    padding: 0 2rem;
+    padding: 2rem;
   }
 
   &__filters {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  &__filter-wrapper {
+    display: flex;
     flex-direction: column;
-    width: 50%;
-    justify-content: center;
   }
 
   &__filtered-value {
-    width: 50%;
+    margin: 0.5rem 0;
   }
 
   &__key,
@@ -32,7 +37,7 @@
   &__label,
   &__value {
     padding: 0 2rem;
-    width: 33.3%;
+    width: 33%;
     border: 1px solid black;
   }
 }

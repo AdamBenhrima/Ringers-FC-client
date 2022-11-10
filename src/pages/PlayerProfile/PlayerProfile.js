@@ -38,15 +38,16 @@ const PlayerProfile = () => {
 
   return (
     <>
+      <div className="player-profile__header">
+        <img
+          className="player-profile__arrow"
+          src={arrow}
+          onClick={() => navigate(-1)}
+        />
+        <h2 className="player-profile__title">Player Profile</h2>
+      </div>
       <div className="player-profile">
-        <div className="player-profile__header">
-          <img
-            className="player-profile__arrow"
-            src={arrow}
-            onClick={() => navigate(-1)}
-          />
-          <h3 className="player-profile__name">{player.playerName}</h3>
-        </div>
+        <h3 className="player-profile__name">{player.playerName}</h3>
         <div className="player-profile__labels">
           <p>Positions Played</p>
           <p>Playing Level</p>

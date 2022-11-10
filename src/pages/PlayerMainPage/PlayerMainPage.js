@@ -7,11 +7,11 @@ const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
       <div className="team-list">
         <h1 className="team-list__title">Team List</h1>
         <div className="team-list__box">
-          <div className="player-list__filters">
+          <div className="team-list__filters">
             <h4>Filter:</h4>
-            <div className="player-list__filter-wrapper">
+            <div className="team-list__filter-wrapper">
               <select
-                className="player-list__filtered-value"
+                className="team-list__filtered-value"
                 onChange={(e) => {
                   handlePositionFilter(e.target.value);
                 }}
@@ -25,7 +25,7 @@ const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
                 <option value="Forward">Forward</option>
               </select>
               <select
-                className="player-list__filtered-value"
+                className="team-list__filtered-value"
                 onChange={(e) => {
                   console.log(e.target.value);
                   handleLevelFilter(e.target.value);

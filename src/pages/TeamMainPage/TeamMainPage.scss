@@ -7,13 +7,14 @@
   }
 
   &__box {
-    padding: 0 2rem;
+    padding: 2rem;
   }
 
   &__filters {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 1rem;
   }
 
   &__filter-wrapper {
