@@ -42,8 +42,6 @@ const PlayerSignupForm = ({ getPlayers }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name);
-    console.log(value);
     setPlayerDetails({ ...playerDetails, [name]: value });
   };
 
@@ -56,7 +54,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
     });
   };
   const addPlayer = async () => {
-    const { data } = await axios
+    await axios
       .post(`${process.env.REACT_APP_SERVER_URL}/players`, playerDetails)
       .catch((error) => {
         alert(error.response.statusText);
@@ -75,27 +73,21 @@ const PlayerSignupForm = ({ getPlayers }) => {
       className="player-form"
       name="playerForm"
       id="playerForm"
-      onSubmit={(e) => {
-        submitHandler(e);
-      }}
+      onSubmit={(e) => submitHandler(e)}
     >
       <input
         className="form-input"
         type="text"
         placeholder="Player Name"
         name="playerName"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
       />
       <input
         className="form-input"
         type="text"
         placeholder="Email"
         name="playerEmail"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
       />
       {/* <input
         className="form-input"
@@ -108,18 +100,14 @@ const PlayerSignupForm = ({ getPlayers }) => {
         type="text"
         placeholder="Mobile number"
         name="playerTelephone"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
       />
       <input
         className="form-input"
         type="text"
         placeholder="Postcode"
         name="postcode"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
       />
       <label htmlFor="level" className="signup-slider">
         Playing Level
@@ -134,9 +122,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
           max={3}
           form="playerForm"
           name="level"
-          onChange={(e) => {
-            handleInputChange(e);
-          }}
+          onChange={(e) => handleInputChange(e)}
         />
       </label>
       <fieldset className="form-input">
@@ -147,9 +133,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
             id="goalkeeper"
             name="positions"
             value="Goalkeeper"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="goalkeeper">Goalkeeper</label>
         </div>
@@ -159,9 +143,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
             id="defender"
             name="positions"
             value="Defender"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="defender">Defender</label>
         </div>
@@ -171,9 +153,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
             id="midfielder"
             name="positions"
             value="Midfielder"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="midfielder">Midfielder</label>
         </div>
@@ -183,9 +163,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
             id="forward"
             name="positions"
             value="Forward"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="forward">Forward</label>
         </div>

@@ -1,3 +1,4 @@
+import { Skeleton } from "@mui/material";
 import PlayerList from "../../Components/PlayerList/PlayerList";
 import "./TeamMainPage.scss";
 
@@ -45,7 +46,29 @@ const TeamMainPage = ({ players, handleLevelFilter, handlePositionFilter }) => {
             <h4 className="player-list__label">Position</h4>
             <h4 className="player-list__label">Playing Level</h4>
           </div>
-
+          {!players.length && (
+            <div className="skeleton__wrapper">
+              <p>Backend in booting up...</p>
+              <Skeleton
+                className="skeleton"
+                variant="rectangular"
+                width="100%"
+                height={50}
+              />
+              <Skeleton
+                className="skeleton"
+                variant="rectangular"
+                width="100%"
+                height={50}
+              />
+              <Skeleton
+                className="skeleton"
+                variant="rectangular"
+                width="100%"
+                height={50}
+              />
+            </div>
+          )}
           {players.map((player) => {
             return <PlayerList player={player} key={player.id} />;
           })}

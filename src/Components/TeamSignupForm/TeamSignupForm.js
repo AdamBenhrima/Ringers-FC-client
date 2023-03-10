@@ -107,18 +107,14 @@ const TeamSignupForm = ({ getTeams }) => {
         type="text"
         placeholder="Mobile number"
         name="teamTelephone"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
       />
       <input
         className="form-input"
         type="text"
         placeholder="Postcode"
         name="postcode"
-        onChange={(e) => {
-          handleInputChange(e);
-        }}
+        onChange={(e) => handleInputChange(e)}
       />
       <label htmlFor="level" className="signup-slider">
         Playing Level
@@ -133,9 +129,7 @@ const TeamSignupForm = ({ getTeams }) => {
           max={3}
           form="teamForm"
           name="level"
-          onChange={(e) => {
-            handleInputChange(e);
-          }}
+          onChange={(e) => handleInputChange(e)}
         />
       </label>
       <fieldset className="form-input">
@@ -146,9 +140,7 @@ const TeamSignupForm = ({ getTeams }) => {
             id="goalkeeper"
             name="positions"
             value="Goalkeeper"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="goalkeeper">Goalkeeper</label>
         </div>
@@ -158,9 +150,7 @@ const TeamSignupForm = ({ getTeams }) => {
             id="defender"
             name="positions"
             value="Defender"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="defender">Defender</label>
         </div>
@@ -170,9 +160,7 @@ const TeamSignupForm = ({ getTeams }) => {
             id="midfielder"
             name="positions"
             value="Midfielder"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="midfielder">Midfielder</label>
         </div>
@@ -182,9 +170,7 @@ const TeamSignupForm = ({ getTeams }) => {
             id="forward"
             name="positions"
             value="Forward"
-            onChange={(e) => {
-              handlePositionChange(e);
-            }}
+            onChange={(e) => handlePositionChange(e)}
           />
           <label htmlFor="forward">Forward</label>
         </div>

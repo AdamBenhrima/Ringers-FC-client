@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./PlayerHero.scss";
 
 const PlayerHero = () => {
@@ -5,9 +6,9 @@ const PlayerHero = () => {
     <div className="signup__space">
       <h3 className="signup__title">Become a Ringer!</h3>
       <div className="player-hero">
-        <a href="/player-signup-page" className="player-hero__button">
+        <Link to="/player-signup-page" className="player-hero__button">
           Player Signup
-        </a>
+        </Link>
       </div>
     </div>
   );
