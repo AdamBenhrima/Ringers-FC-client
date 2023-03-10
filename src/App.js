@@ -21,7 +21,9 @@ function App() {
   const [selectedPosition, setSelectedPosition] = useState("");
 
   const getPlayers = async () => {
-    const { data } = await axios.get("http://localhost:8080/players");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/players`
+    );
     setPlayers(data);
   };
 
@@ -30,7 +32,9 @@ function App() {
   }, []);
 
   const getTeams = async () => {
-    const { data } = await axios.get("http://localhost:8080/teams");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/teams`
+    );
     setTeams(data);
   };
 
@@ -40,7 +44,9 @@ function App() {
 
   useEffect(() => {
     const fetchPlayers = async () => {
-      let { data } = await axios.get("http://localhost:8080/players");
+      let { data } = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/players`
+      );
       if (selectedLevel) {
         data = data.filter((player) => player.level === selectedLevel);
       }
@@ -56,7 +62,9 @@ function App() {
 
   useEffect(() => {
     const fetchTeams = async () => {
-      let { data } = await axios.get("http://localhost:8080/teams");
+      let { data } = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/teams`
+      );
       if (selectedLevel) {
         data = data.filter((team) => team.level === selectedLevel);
       }
@@ -71,7 +79,9 @@ function App() {
   }, [selectedLevel, selectedPosition]);
 
   const getMessages = async () => {
-    const { data } = await axios.get("http://localhost:8080/messages");
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/messages`
+    );
     setMessages(data);
   };
 

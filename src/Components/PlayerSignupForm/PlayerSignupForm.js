@@ -57,7 +57,7 @@ const PlayerSignupForm = ({ getPlayers }) => {
   };
   const addPlayer = async () => {
     const { data } = await axios
-      .post("http://localhost:8080/players", playerDetails)
+      .post(`${process.env.REACT_APP_SERVER_URL}/players`, playerDetails)
       .catch((error) => {
         alert(error.response.statusText);
         console.log(error.response);

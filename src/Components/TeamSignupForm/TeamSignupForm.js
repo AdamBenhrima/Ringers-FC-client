@@ -56,7 +56,7 @@ const TeamSignupForm = ({ getTeams }) => {
 
   const addTeam = async () => {
     const { data } = await axios
-      .post("http://localhost:8080/teams", teamDetails)
+      .post(`${process.env.REACT_APP_SERVER_URL}/teams`, teamDetails)
       .catch((error) => {
         alert(error.response.statusText);
         console.log(error.response);
