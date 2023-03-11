@@ -1,26 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { TableCell, TableRow } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const PlayerList = ({ player }) => {
-  const keys = Object.keys(player.positionPlayed);
-  const value = Object.values(player.positionPlayed);
-  const renderPositions = () => {
-    return value.map((value, i) => {
-      if (value) {
-        return <p>{keys[i]}</p>;
-      }
-    });
-  };
+  const navigate = useNavigate();
 
   return (
-    <Link
-      to={`/team-home/player-profile/${player.id}`}
+    <TableRow
       className="player-list__values"
+      onClick={() => navigate(`/team-home/player-profile/${player.id}`)}
     >
-      <p className="player-list__value">{player.playerName}</p>
-      <div className="player-list__value">{renderPositions()}</div>
-      <p className="player-list__value">{player.level}</p>
-    </Link>
+      <TableCell>{player.name}</TableCell>
+      <TableCell>{player.position}</TableCell>
+      <TableCell>{player.level}</TableCell>
+    </TableRow>
   );
 };
 

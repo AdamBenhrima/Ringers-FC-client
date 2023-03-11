@@ -8,7 +8,6 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import PlayerList from "../../Components/PlayerList/PlayerList";
 import "./TeamMainPage.scss";
 
@@ -17,11 +16,7 @@ const createData = (name, position, level, id) => {
 };
 
 const TeamMainPage = ({ players, handleLevelFilter, handlePositionFilter }) => {
-  const navigate = useNavigate();
-
   const rows = players.map((player) => {
-    console.log(player);
-
     const keys = Object.keys(player.positionPlayed);
     const value = Object.values(player.positionPlayed);
 
@@ -77,24 +72,11 @@ const TeamMainPage = ({ players, handleLevelFilter, handlePositionFilter }) => {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow
-                    onClick={() =>
-                      navigate(`/team-home/player-profile/${row.id}`)
-                    }
-                  >
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.position}</TableCell>
-                    <TableCell>{row.level}</TableCell>
-                  </TableRow>
+                  <PlayerList player={row} key={row.id} />
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
-          <div className="player-list__key">
-            <h4 className="player-list__label">Player Name</h4>
-            <h4 className="player-list__label">Position</h4>
-            <h4 className="player-list__label">Playing Level</h4>
-          </div>
           {!players.length && (
             <div className="skeleton__wrapper">
               <p>Backend is booting up...</p>
@@ -118,9 +100,6 @@ const TeamMainPage = ({ players, handleLevelFilter, handlePositionFilter }) => {
               />
             </div>
           )}
-          {players.map((player) => {
-            return <PlayerList player={player} key={player.id} />;
-          })}
         </div>
       </div>
     </>

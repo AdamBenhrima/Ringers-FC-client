@@ -6,6 +6,9 @@
 
   &__arrow {
     width: 4rem;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__header {

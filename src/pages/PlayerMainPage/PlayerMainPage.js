@@ -8,7 +8,6 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import TeamList from "../../Components/TeamList/TeamList";
 import "./PlayerMainPage.scss";
 
@@ -17,11 +16,7 @@ const createData = (name, position, level, id) => {
 };
 
 const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
-  const navigate = useNavigate();
-
   const rows = teams.map((team) => {
-    console.log(team);
-
     const keys = Object.keys(team.positionNeeded);
     const value = Object.values(team.positionNeeded);
 
@@ -57,10 +52,7 @@ const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
               </select>
               <select
                 className="team-list__filtered-value"
-                onChange={(e) => {
-                  console.log(e.target.value);
-                  handleLevelFilter(e.target.value);
-                }}
+                onChange={(e) => handleLevelFilter(e.target.value)}
                 name="level"
                 id="level"
               >
@@ -83,25 +75,11 @@ const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
               </TableHead>
               <TableBody>
                 {rows.map((row) => (
-                  <TableRow
-                    onClick={() =>
-                      navigate(`/player-home/team-profile/${row.id}`)
-                    }
-                  >
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.position}</TableCell>
-                    <TableCell>{row.level}</TableCell>
-                  </TableRow>
+                  <TeamList team={row} key={row.id} />
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
-
-          <div className="team-list__key">
-            <h4 className="team-list__label">Team Name</h4>
-            <h4 className="team-list__label">Position</h4>
-            <h4 className="team-list__label">Playing Level</h4>
-          </div>
           {!teams.length && (
             <div className="skeleton__wrapper">
               <p>Backend is booting up...</p>
@@ -125,9 +103,6 @@ const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
               />
             </div>
           )}
-          {teams.map((team) => {
-            return <TeamList team={team} key={team.id} />;
-          })}
         </div>
       </div>
     </>
