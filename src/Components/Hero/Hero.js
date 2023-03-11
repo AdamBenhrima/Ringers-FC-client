@@ -10,6 +10,7 @@ const Hero = () => {
           autoPlay
           muted
           loop
+          playsInline
           src={footballBackground}
         ></video>
         {/* <h2 className="hero__title">Football's great init?</h2> */}
