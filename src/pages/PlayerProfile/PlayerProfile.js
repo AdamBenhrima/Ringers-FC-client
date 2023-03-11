@@ -12,7 +12,7 @@ const PlayerProfile = () => {
 
   const getPlayer = async () => {
     const { data } = await axios.get(
-      `http://localhost:8080/players/${playerId}`
+      `${process.env.REACT_APP_SERVER_URL}/players/${playerId}`
     );
     setPlayer(data);
   };

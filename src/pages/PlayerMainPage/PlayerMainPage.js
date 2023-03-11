@@ -1,8 +1,38 @@
-import { Skeleton } from "@mui/material";
+import {
+  Paper,
+  Skeleton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import TeamList from "../../Components/TeamList/TeamList";
 import "./PlayerMainPage.scss";
 
+const createData = (name, position, level, id) => {
+  return { name, position, level, id };
+};
+
 const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
+  const navigate = useNavigate();
+
+  const rows = teams.map((team) => {
+    console.log(team);
+
+    const keys = Object.keys(team.positionNeeded);
+    const value = Object.values(team.positionNeeded);
+
+    const positions = value.map((value, i) => {
+      if (value) {
+        return <p>{keys[i]}</p>;
+      }
+    });
+    return createData(team.teamName, positions, team.level, team.id);
+  });
+
   return (
     <>
       <div className="team-list">
@@ -41,6 +71,32 @@ const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
               </select>
             </div>
           </div>
+
+          <TableContainer component={Paper}>
+            <Table sx={{ width: "100%" }}>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Team Name</TableCell>
+                  <TableCell>Position</TableCell>
+                  <TableCell>Playing Level</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow
+                    onClick={() =>
+                      navigate(`/player-home/team-profile/${row.id}`)
+                    }
+                  >
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.position}</TableCell>
+                    <TableCell>{row.level}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
           <div className="team-list__key">
             <h4 className="team-list__label">Team Name</h4>
             <h4 className="team-list__label">Position</h4>
@@ -48,7 +104,7 @@ const PlayerMainPage = ({ teams, handleLevelFilter, handlePositionFilter }) => {
           </div>
           {!teams.length && (
             <div className="skeleton__wrapper">
-              <p>Backend in booting up...</p>
+              <p>Backend is booting up...</p>
               <Skeleton
                 className="skeleton"
                 variant="rectangular"

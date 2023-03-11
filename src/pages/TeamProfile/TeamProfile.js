@@ -11,7 +11,9 @@ const TeamProfile = () => {
   const [team, setTeam] = useState(null);
 
   const getTeam = async () => {
-    const { data } = await axios.get(`http://localhost:8080/teams/${teamId}`);
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/teams/${teamId}`
+    );
     setTeam(data);
   };
 
